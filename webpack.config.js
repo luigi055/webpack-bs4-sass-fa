@@ -26,6 +26,10 @@ module.exports = {
   },
   resolve: {
     root: './',
+    modulesDirectories: [
+			'node_modules',
+			'./src/components'
+		],
     alias: {},
     extensions: ['', '.js', '.jsx']
   },
@@ -42,7 +46,11 @@ module.exports = {
       {
         test: /\.scss$/,
         loader: 'style!css!sass'
-      }
+      },
+      {
+				test: /\.(woff|woff2|eot|ttf|svg)$/, 
+        loader: 'url' 
+			}
     ]
   },
   devServer: {
