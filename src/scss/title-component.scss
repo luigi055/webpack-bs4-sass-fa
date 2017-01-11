@@ -1,0 +1,12 @@
+$main-color: #f90;
+
+.title-component {
+  padding: 20px;
+  background: $main-color;
+  color: #EEE;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+
+  h1 {
+    text-transform: uppercase;
+  }
+}
