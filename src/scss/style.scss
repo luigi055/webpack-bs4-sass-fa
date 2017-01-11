@@ -1,0 +1,10 @@
+// Bootstrap settings
+@import "base/bootstrap-custom";
+// _variables.scss was commented in node_modules/bootstrap/scss/bootstrap.scss
+@import "bootstrap";
+
+// variables
+@import "base/variables";
+
+// Components
+@import "components/title-component";

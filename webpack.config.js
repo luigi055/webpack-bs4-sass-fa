@@ -1,9 +1,12 @@
 const webpack = require('webpack');
+const path = require('path');
 
 module.exports = {
   entry: [
     'babel-polyfill',
     'script!jquery/dist/jquery.min.js', 
+    'script!tether/dist/js/tether.min.js', 
+    'script!bootstrap/dist/js/bootstrap.min.js', 
     './src'
   ],
   externals: {
@@ -12,7 +15,9 @@ module.exports = {
   plugins: [
     new webpack.ProvidePlugin({
       '$': 'jquery', // Assigning the $ and jQuery to jquery when bundle
-      'jQuery': 'jquery'
+      'jQuery': 'jquery',
+      'Tether': 'tether',
+      'window.Tether': 'tether'
     })
   ],
   output: {
@@ -45,5 +50,10 @@ module.exports = {
     historyApiFallback: true,
     contentBase: './public',
     inline: true
+  },
+  sassLoader: {
+    includePaths: [
+      path.resolve(__dirname, './node_modules/bootstrap/scss')
+    ]
   }
 };

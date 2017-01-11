@@ -1,4 +1,4 @@
-import './scss/title-component.scss';
+import './scss/style.scss';
 import creatingPromises from './practices/promises/promises';
 import creatingPromiseAll from './practices/promises/promiseAll';
 import jokes from './practices/promises/jokes';
