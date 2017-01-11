@@ -7,7 +7,7 @@ module.exports = {
     'script!jquery/dist/jquery.min.js', 
     'script!tether/dist/js/tether.min.js', 
     'script!bootstrap/dist/js/bootstrap.min.js', 
-    './src'
+    './src/app'
   ],
   externals: {
     jquery: 'jQuery'
@@ -45,12 +45,34 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!sass'
+        loader: 'style!css!autoprefixer!sass'
+      },
+      // the url-loader uses DataUrls.
+      // the file-loader emits files.
+      { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+        loader: "url-loader?limit=10000&mimetype=application/font-woff" 
+      },
+      { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
+        loader: "file-loader" 
       },
       {
-				test: /\.(woff|woff2|eot|ttf|svg)$/, 
-        loader: 'url' 
-			}
+        test: /.*\.(gif|png|jpe?g|svg)$/i,
+        loaders: [
+          'file-loader',
+          {
+            loader: 'image-webpack',
+            query: {
+              progressive: true,
+              optimizationLevel: 7,
+              interlaced: false,
+              pngquant: {
+                quality: '65-90',
+                speed: 4
+              }
+            }
+          }
+        ]
+      }
     ]
   },
   devServer: {
