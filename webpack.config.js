@@ -45,7 +45,7 @@ module.exports = {
       },
       {
         test: /\.scss$/,
-        loader: 'style!css!autoprefixer!sass'
+        loader: 'style!css!autoprefixer!postcss-loader!sass'
       },
       // the url-loader uses DataUrls.
       // the file-loader emits files.
