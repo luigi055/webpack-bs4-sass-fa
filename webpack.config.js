@@ -50,15 +50,15 @@ module.exports = {
       // the url-loader uses DataUrls.
       // the file-loader emits files.
       { test: /\.woff(2)?(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "url-loader?limit=10000&mimetype=application/font-woff" 
+        loader: "url-loader?limit=10000&mimetype=application/font-woff&name=assets/fonts/[name].[ext]" 
       },
       { test: /\.(ttf|eot|svg)(\?v=[0-9]\.[0-9]\.[0-9])?$/, 
-        loader: "file-loader" 
+        loader: "file-loader?limit=10000&name=assets/fonts/[name].[ext]" 
       },
       {
         test: /.*\.(gif|png|jpe?g|svg)$/i,
         loaders: [
-          'file-loader',
+          'file-loader?limit=1024&name=assets/images/[name].[ext]',
           {
             loader: 'image-webpack',
             query: {
@@ -78,7 +78,7 @@ module.exports = {
   devServer: {
     port: 3000,
     historyApiFallback: true,
-    contentBase: './public',
+    contentBase: './public/assets/js',
     inline: true
   },
   sassLoader: {
